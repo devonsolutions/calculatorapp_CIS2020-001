@@ -7,12 +7,14 @@
 </head>
 
 <body>
-    <ul>
-        <li><a href="{{ url_for('index') }}">Arithmetic Calculator</a></li>
-        <li><a href="{{ url_for('matrix_addition') }}">Matrix Addition<a></li>
-        <li><a href="{{ url_for('matrix_subtraction') }}">Matrix Subtraction</a></li>
-    </ul>
-    {% block content %}{% endblock %}
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Calculator</a>
+        <a href="{{ url_for('how_to_use') }}">How to Use</a>
+        <a href="{{ url_for('about') }}">About</a>
+    </div>
+
+    <main>{% block content %}{% endblock %}</main>
+    <footer><p>Devon Cenario © 2025. CIS 2020-001.</p></footer>
 </body>
 </html>
 

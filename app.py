@@ -2,17 +2,24 @@ from flask import Flask, render_template, request
 
 app = Flask (__name__, template_folder='templates')
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"]) 
 def index():
-    return render_template('index.html')
+    result = ''
+    if request.method == "POST":
+        try:
+            expression = request.form["display"]
+            result = eval(expression)
+        except Exception as e:
+            result = "Error"
+    return render_template("index.html", result=result)
 
-@app.route("/matrix_addition")
-def matrix_addition():
-    return render_template('matrix_addition.html')
+@app.route("/how_to_use")
+def how_to_use():
+    return render_template('how_to_use.html')
 
-@app.route("/matrix_subtraction")
-def matrix_subtraction():
-    return render_template('matrix_subtraction.html')
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
